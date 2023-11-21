@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var url;
     var kunciurl = 'false';
 
+    // Clear the referrer
+    document.referrer = ''
+
     if (localStorage.getItem('url')) {
         url = localStorage.getItem('url');
     } else {
