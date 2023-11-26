@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem('url')) {
         url = localStorage.getItem('url');
     } else {
-        url = 'http://192.168.0.201/';
+        url = 'https://11.sman17kabtangerang.sch.id/';
     }
 
     if (url) {
