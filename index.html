@@ -3,10 +3,10 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <link href="css/tailwind.css" rel="stylesheet">
       <meta name="theme-color" content="#3F51B5">
       <!-- Use the desired shade of purple (e.g., #8a4fff) -->
-      <link rel="stylesheet" href="https://unpkg.com/css.gg@2.0.0/icons/css/transcript.css">
+      <link rel="stylesheet" href="css/transcript.css">
       <link rel="stylesheet" href="css/styles.css">
       <style>
          body, html {
@@ -37,7 +37,7 @@
             <i class="gg-transcript"></i>
          </div>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="js/sweetalert.js"></script>
       <script src="js/index.js"></script>
       <script>
 let timerInterval;
@@ -79,6 +79,20 @@ if (!userAlreadyViewed) {
     }
   });
 }
+      </script>
+      <script>
+        Swal.fire({
+         icon: "warning",
+         color: "#FFFF",
+         timer: 5500,
+         background: "#1F2937",
+         titleText: "PERINGATAN",
+         text: "Kalau lu ketahuan ama guru karena kecorobohan lu sendiri jangan bawa-bawa pembuat web!",
+         footer: "JANGAN LUPA KECILIN VOLUME LU",
+         confirmButtonText: "Okeh wir",
+         confirmButtonColor: "#5500ff"
+         });
+
       </script>
       <script>
          // JavaScript code to handle full screen toggle
