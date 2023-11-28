@@ -1,144 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="css/tailwind.css" rel="stylesheet">
-      <meta name="theme-color" content="#3F51B5">
-      <!-- Use the desired shade of purple (e.g., #8a4fff) -->
-      <link rel="stylesheet" href="css/transcript.css">
-      <link rel="stylesheet" href="css/styles.css">
-      <style>
-         body, html {
-         overflow: hidden;
-         }
-      </style>
-      <title>Exam Bypass</title>
-      <link rel="icon" type="image/x-icon" href="img/icon.jpg">
-   </head>
-   <body class="bg-gray-800">
-      <div class="w-full min-h-screen flex items-center justify-center">
-         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md text-center relative">
-            <div id="fullScreenToggle" class="cursor-pointer absolute top-4 left-4 text-2xl text-gray-600">
-            </div>
-            <div class="circle-image mb-4">
-               <img src="img/icon.jpg" alt="Icon">
-            </div>
-            <h1 class="text-3xl font-bold font-sans">Exam Bypass</h1>
-            <form id="askurl" class="flex flex-col relative">
-               <label for="url" class="mb-2 text-lg font-semibold">Insert Exam Url</label>
-               <input type="text" id="url" placeholder="URL CBT" class="w-full p-2 border rounded">
-               <button type="button" id="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">Run</button>
-            </form>
-            <div id="content" class="mt-4"></div>
-         </div>
-         <!-- Tambahkan elemen baru untuk ikon di pojok kiri bawah -->
-         <div id="bottomLeftIcon" class="cursor-pointer absolute bottom-4 left-4 text-2xl text-gray-600">
-            <i class="gg-transcript"></i>
-         </div>
-      </div>
-      <script src="js/sweetalert.js"></script>
-      <script src="js/index.js"></script>
-      <script>
-let timerInterval;
-let textIndex = 0;
-const texts = ["Loading", "Injecting", "Finish"];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Changelog Page</title>
+    <style>
+        /* Custom styles for dark mode */
+        .dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
 
-// Check if the flag is present in localStorage
-const userAlreadyViewed = localStorage.getItem("ifuseralreadyview");
+        /* Custom styles for light mode */
+        .light-mode {
+            background-color: #f8f9fa;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
 
-// If the flag is not present, show the Swal alert
-if (!userAlreadyViewed) {
-  Swal.fire({
-    title: "PLS WAIT",
-    html: "<b></b>",
-    imageUrl: "img/hutao.jpg",
-    imageHeight: 250,
-    color: "#FFFF",
-    background: "#1F2937",
-    timer: 5500,
-    timerProgressBar: true,
-    didOpen: () => {
-      Swal.showLoading();
-      const timer = Swal.getPopup().querySelector("b");
+        #toggleMode {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark-mode-transition font-sans">
 
-      timerInterval = setInterval(() => {
-        timer.textContent = `${Swal.getTimerLeft()}`;
-        Swal.getPopup().querySelector('b').textContent = texts[textIndex];
-        textIndex = (textIndex + 1) % texts.length;
-      }, 1500);
-    },
-    willClose: () => {
-      clearInterval(timerInterval);
-      // Set the flag in localStorage to indicate the user has viewed the alert
-      localStorage.setItem("ifuseralreadyview", "true");
-    }
-  }).then((result) => {
-    if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("I was closed by the timer");
-    }
-  });
-}
-      </script>
-      <script>
-        Swal.fire({
-         icon: "warning",
-         color: "#FFFF",
-         timer: 5500,
-         background: "#1F2937",
-         titleText: "PERINGATAN",
-         text: "Kalau lu ketahuan ama guru karena kecorobohan lu sendiri jangan bawa-bawa pembuat web!",
-         footer: "JANGAN LUPA KECILIN VOLUME LU",
-         confirmButtonText: "Okeh wir",
-         confirmButtonColor: "#5500ff"
-         });
+    <div class="container mx-auto p-8">
+        <div class="flex justify-end mb-4">
+            <button id="toggleMode" class="px-3 py-1 bg-gray-300 dark:bg-gray-700 rounded-full">
+                <span id="modeIcon">☀️</span>
+            </button>
+        </div>
+        <h1 class="text-4xl font-bold mb-6">Apa nih? mau ngapain? dikira kalau ketahuan langsung diem?</h1>
+        <h2 class="text-4xl font-bold mb-6">Suruh IT supportnya tidur aja</h2>
+        <h3 class="text-4xl font-bold mb-6">Jadi guru yang bener dikit</h3>
 
-      </script>
-      <script>
-         // JavaScript code to handle full screen toggle
-         const toggleFullScreen = document.getElementById('fullScreenToggle');
-         const bottomLeftIcon = document.getElementById('bottomLeftIcon');
-         
-         toggleFullScreen.addEventListener('click', () => {
-             if (document.fullscreenElement) {
-                 exitFullScreen();
-             } else {
-                 enterFullScreen();
-             }
-         });
-         
-         bottomLeftIcon.addEventListener('click', () => {
-             if (document.fullscreenElement) {
-                 exitFullScreen();
-             } else {
-                 enterFullScreen();
-             }
-         });
-         
-         function enterFullScreen() {
-             const element = document.documentElement;
-             if (element.requestFullscreen) {
-                 element.requestFullscreen();
-             } else if (element.mozRequestFullScreen) {
-                 element.mozRequestFullScreen();
-             } else if (element.webkitRequestFullscreen) {
-                 element.webkitRequestFullscreen();
-             } else if (element.msRequestFullscreen) {
-                 element.msRequestFullscreen();
-             }
-         }
-         
-         function exitFullScreen() {
-             if (document.exitFullscreen) {
-                 document.exitFullscreen();
-             } else if (document.mozCancelFullScreen) {
-                 document.mozCancelFullScreen();
-             } else if (document.webkitExitFullscreen) {
-                 document.webkitExitFullscreen();
-             } else if (document.msExitFullscreen) {
-                 document.msExitFullscreen();
-             }
-         }
-      </script>
-   </body>
+        <!-- Add more versions and details as needed -->
+
+    </div>
+
+    <script>
+        const toggleModeButton = document.getElementById('toggleMode');
+        const modeIcon = document.getElementById('modeIcon');
+        const body = document.body;
+
+        // Check user's preference for dark mode
+        const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Set initial mode based on user preference
+        if (prefersDarkMode) {
+            enableDarkMode();
+        }
+
+        // Toggle between dark mode and light mode
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            updateModeIcon();
+        });
+
+        // Enable dark mode
+        function enableDarkMode() {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            updateModeIcon();
+        }
+
+        // Enable light mode
+        function enableLightMode() {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            updateModeIcon();
+        }
+
+        // Update the mode icon based on the current mode
+        function updateModeIcon() {
+            const isDarkMode = body.classList.contains('dark-mode');
+            modeIcon.textContent = isDarkMode ? '🌙' : '☀️';
+        }
+    </script>
+</body>
 </html>
